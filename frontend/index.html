@@ -46,6 +46,35 @@
         </table>
     </div>
 
+    <button id="show-btn">Show</button>
+    <table class="myTable"></table>
+
+    <div id="deletedata">
+        <input type="number" id="deleteuserId" placeholder="User Id" name="deleteuserId">
+        <button onclick="deletedata()">Delete Data</button>
+    </div>
+
+    
+<!-- update fields -->
+<button id="updateBtn">UpdateBtn</button>
+    <form id ="updatedata" style="display:none"> 
+        <input type="number" id="updateuserId" placeholder="User Id" name="updateuserId">
+
+        <div class="input-field3">
+            <input type="text" name= "name3" placeholder="Enter name" id="nameField3">
+        </div>
+
+        <div class="input-field3">
+            <input type="email" name = "email3" placeholder="Enter mail" id="mailField3">
+        </div>
+
+        <div class="input-field3">
+            <input type="password" name = "password3" placeholder="Password" id="passField3">
+        </div>
+
+        <button id = "updatedatabtn" onclick="updatedata()">Update Data</button>
+    </form>
+
     <!-- SignIn part -->
 
     <div class="container2">

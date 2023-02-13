@@ -53,3 +53,14 @@ form input {
     margin-right: 60px;
     border-radius: 5px;
 }
+
+#deletedata{
+    padding: 2px;
+}
+
+#updatedata input {
+    margin: 1px;
+    padding: 2px;
+    font-size: 15px;
+    
+}

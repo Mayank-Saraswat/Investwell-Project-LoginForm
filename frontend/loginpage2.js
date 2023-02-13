@@ -1,5 +1,22 @@
 let arr = [];
 let map = new Map();
+
+
+let updateBtn = document.getElementById('updateBtn');
+
+// updateBtn.addEventListener('click',(e)=>{
+//   e.preventDefault();
+//   document.getElementById('updatedata').style.display="block";
+// })
+updateBtn.addEventListener('click', () => {
+  document.getElementById('updatedata').style.display = "block";
+})
+document.getElementById("updatedatabtn").addEventListener("click", (e) => {
+  e.preventDefault();
+  updatedata();
+})
+
+
 document.getElementById("submit").addEventListener("click", function (event) {
   event.preventDefault()
 
@@ -7,6 +24,8 @@ document.getElementById("submit").addEventListener("click", function (event) {
   let email = document.getElementById("mailField").value;
   let password = document.getElementById("passField").value;
   let display = document.getElementById('tablein');
+
+
 
   //validation
   if (email.indexOf('@') <= 0) {
@@ -37,50 +56,117 @@ document.getElementById("submit").addEventListener("click", function (event) {
 
   let datadisplay = "";
   for (let i = 0; i < arr.length; i++) {
-    datadisplay += "<tr> <td>" + arr[i].Name + "</td>";
+    datadisplay += "<tr> <td>" + arr[i].name + "</td>";
     datadisplay += "<td>" + arr[i].email + "</td> </tr>";
 
   }
 
   display.innerHTML = datadisplay;
-
-  //triggerAPI();
   datagiven(user);
+  deletedata(user);
+  updatedata(user);
 });
 
+//get api
+document.getElementById('show-btn').addEventListener('click',triggerAPI);
 function triggerAPI() {
-  $(document).ready(function () { 
-    $.ajax({
-      url: "http://localhost:3001/fetch",
-      type: "GET",
-      success: function (result) {
-        console.log(result);
-      },
 
-      error: function (error) {
-        console.log(error);
-      }
-    })
-    console.log(user);
-
-  })
-}
-
-function datagiven(user){
+  let printValues = [];
   $.ajax({
-    url : "http://localhost:3001/insert",
-    type : "POST",
-    data : user,
-
-    success: function(data){
-      console.log('success', data);
+    url: "http://localhost:3001/fetch",
+    type: "GET",
+    success: function (result) {
+      printValues = result;
+      // console.log(result);
+      let str = printValues.length > 0 ?
+        `<tr class = "header">
+        <th> UserID</th>
+        <th> Name</th>
+        <th> Email</th></tr>`: "";
+      printValues.forEach((data) => {
+        str += `<tr>
+        <td>${data.UserId}</td>
+        <td>${data.name}</td>
+        <td>${data.email}</td>
+        </tr>`;
+      });
+      console.log(str);
+      const output = document.getElementsByClassName('myTable')[0];
+      output.innerHTML = str;
     },
-    error: function(error){
+
+    error: function (error) {
       console.log(error);
     }
+  })
 
+}
+
+//post api
+function datagiven(user) {
+  $.ajax({
+    url: "http://localhost:3001/insert",
+    type: "POST",
+    data: user,
+
+    success: function (data) {
+      console.log('success', data);
+    },
+    error: function (error) {
+      console.log(error);
+    }
   })
 }
+
+//delete api
+function deletedata() {
+  const userId = (document.getElementById('deleteuserId').value);
+  let obj = {
+    userId
+  };
+  console.log(obj)
+  $.ajax({
+    url: "http://localhost:3001/delete",
+    type: "DELETE",
+    data: obj,
+
+    success: function (data) {
+      console.log('success', data);
+    },
+    error: function (error) {
+      console.log(error);
+    }
+  })
+}
+
+//update api
+function updatedata() {
+  const userId = (document.getElementById('updateuserId').value);
+  const name = (document.getElementById('nameField3').value);
+  const email = (document.getElementById('mailField3').value);
+  const password = (document.getElementById('passField3').value);
+
+  let obj = {
+    userId,
+    name,
+    email,
+    password
+  };
+  console.log(obj);
+  $.ajax({
+    url: "http://localhost:3001/update",
+    type: "POST",
+    data: obj,
+
+    success: function (data) {
+      console.log('success', data);
+    },
+    error: function (error) {
+      console.log(error);
+    }
+  })
+}
+
 
 // Sign In part
 
