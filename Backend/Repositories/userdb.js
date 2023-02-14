@@ -1,6 +1,6 @@
 const connection = require('../Connection/db');
 
-const fetchData = (sqlQuery) =>{
+const fetchData = async (sqlQuery) =>{
   return new Promise ((resolve) => {
   connection.query(sqlQuery, (err, result)=>{
   if(err){

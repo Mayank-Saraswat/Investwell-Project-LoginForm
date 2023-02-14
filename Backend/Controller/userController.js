@@ -6,12 +6,14 @@ const displayForm = (req, res) => {
   res.sendFile(path.join(__dirname, "..", "..", "/frontend/index.html"));
 }
 
-const controlFetchData = (req, res) => {
+const controlFetchData = async (req, res) => {
   // return serviceFetchData();
-  console.log(req.headers);
-  serviceFetchData().then((data)=>{
-    res.send(data);
-  })
+  //console.log(req.headers);
+  // serviceFetchData().then((data)=>{
+  //   res.send(data);
+  // })
+  const result = await serviceFetchData();
+  res.send(result);
 }
 
 const controlInsertData = (req, res) => {
