@@ -9,8 +9,8 @@ const displayForm = (req, res) => {
 const controlFetchData = (req, res) => {
   // return serviceFetchData();
   console.log(req.headers);
-  serviceFetchData(function (err, result) {
-    res.send(result);
+  serviceFetchData().then((data)=>{
+    res.send(data);
   })
 }
 

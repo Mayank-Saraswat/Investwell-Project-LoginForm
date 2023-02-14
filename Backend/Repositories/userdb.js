@@ -1,15 +1,20 @@
 const connection = require('../Connection/db');
 
-const fetchData = (sqlQuery,cb) =>{
+const fetchData = (sqlQuery) =>{
+  return new Promise ((resolve) => {
   connection.query(sqlQuery, (err, result)=>{
   if(err){
     return console.log(err);
   }
-  return cb(null, result);
+   resolve(result);
+  
+  // return cb(null, result);
+
   // else{
   //   console.log('Data fetched', result);
   // }
     })
+  })
 }
 
 const insertData = (sqlQuery) =>{

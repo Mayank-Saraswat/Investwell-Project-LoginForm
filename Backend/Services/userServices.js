@@ -1,12 +1,16 @@
 const {fetchData,insertData,updateData,deleteData} = require("../Repositories/userdb.js");
 // const repo = require('../Repositories/userdb.js');
 
-const serviceFetchData = (cb)=> {
+const serviceFetchData = ()=> {
+    return new Promise ((resolve) => {
     const subQuery = 'select * from userdata';
     // return fetchData(subQuery);
-    fetchData(subQuery, function(err,res){
-        cb(null, res);
-    });
+    fetchData(subQuery).then((data)=> {
+        resolve(data);
+        // console.log(data);
+    })
+
+})
 }
 
 const serviceInsertData = (newUser) => {
