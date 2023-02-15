@@ -28,7 +28,7 @@ document.getElementById("submit").addEventListener("click", function (event) {
 
 
   //validation
-  var regName = /^[a-zA-Z]+ [a-zA-Z]+$/;  //regex for name validation
+  var regName = /^[A-Za-z]+$/;  //regex for name validation
   if (Name === null || Name.match(regName)===null) {
      alert('Please enter valid name');
      return false;
