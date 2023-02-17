@@ -50,12 +50,22 @@ const deleteData = (sqlQuery) =>{
     })
 }
 
+const checkData = async (sqlQuery) =>{
+  return new Promise ((resolve) => {
+  connection.query(sqlQuery, (err, result)=>{
+  if(err){
+    return console.log(err);
+  }
+  console.log(result);
+   resolve(result);
+    })
+  })
+}
+
 module.exports ={
     fetchData,
     insertData,
     updateData,
-    deleteData
+    deleteData,
+    checkData
 }
-
-
-

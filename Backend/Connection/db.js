@@ -8,12 +8,5 @@ var connection = mysql.createConnection({
     password: 'Mayank123@'
 });
 
-// connection.connect(function (error) {
-//     if (error)
-//         throw error;
-//     else
-//         console.log("Connected!!");
-// })
-
 module.exports = connection;  //To make this file  importable
 

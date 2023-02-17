@@ -5,12 +5,13 @@ const router = express.Router();
 // router.use(bodyParser.json());
 // router.use(bodyParser.urlencoded({ extended: true }));
 
-const {displayForm,controlInsertData,controlFetchData,controlUpdateData,controlDeleteData} = require ('../Controller/userController');
+const {displayForm,controlInsertData,controlFetchData,controlUpdateData,controlDeleteData,controlCheckData} = require ('../Controller/userController');
 
 router.get('/', displayForm);
 router.get('/fetch', controlFetchData);
 router.post('/insert', controlInsertData);
 router.post('/update', controlUpdateData);
 router.delete('/delete', controlDeleteData);
+router.post('/login', controlCheckData);
 
 module.exports = router;

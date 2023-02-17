@@ -1,19 +1,38 @@
-table,th,td {
-    border: 1px solid black;
-    margin: auto;
-    border-collapse: collapse;
+nav {
+    display: flex;
+    text-align: center;
+    width: 100%;
+    background-color: lightblue;
+}
+nav li{
+    list-style-type: none;
+    padding: 20px;
+    font-size: 20px;
+    font-weight: bold;
 }
 
-table {
-    width: 100%;
-    margin-top: 20px;
+nav li a{
+    text-decoration: none;
+}
+
+table, th, td {
+    border: 2px solid blue;
+    border-collapse: collapse;
+    width: 60%;
     font-size: 20px;
     background-color: antiquewhite;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.myTable{
+    margin: auto;
+    margin-top: 20px;
 }
 
 .container {
     text-align: center;
-    background-color: darkseagreen;
+    background-color: cadetblue;
 }
 
 form input {
@@ -21,46 +40,70 @@ form input {
     border-radius: 5px;
 }
 
-.input-group {
-    font-size: 20px;
-}
-
-.input-field {
-    margin: 3px;
-}
-
 /* Sign In part */
-
-.container2{
-    text-align: end;
-    margin-top: -380px;
-    margin-right: 30px;
+#signIn {
+    padding: 2px;
+    margin: 2px;
+    font-size: 18px;
+    border-radius: 5px;
 }
 
-#login2{
+.container2 {
+    text-align: center;
+    margin-top: 20px;
+    margin-right: 30px;
+    background-color: darkseagreen;
+}
+
+#login2 {
     margin-right: 10px;
     margin-top: 10px;
     font-size: 20px;
     border-radius: 5px;
 }
 
-.input-field2 {
-    margin: 3px;
-}
-
-#reset2{
+#reset2 {
     font-size: 20px;
     margin-right: 60px;
     border-radius: 5px;
 }
 
-#deletedata{
+#deletedata {
     padding: 2px;
+    background-color: cadetblue;
+    border-radius: 4px;
+    font-size: 25px;
+}
+
+#deleteuserId{
+    font-size: large;
+}
+
+#delete-Btn{
+    font-size: large;
+    border-radius: 4px;
 }
 
 #updatedata input {
     margin: 1px;
     padding: 2px;
-    font-size: 15px;
-    
+    font-size: 20px;
+}
+
+#update_user{
+    background-color: darkseagreen;
+    text-align: center;
+    margin: 10px;
+}
+
+#updatedatabtn{
+font-size: 18px;
+margin: 5px;
+border-radius: 5px;
+}
+
+@media screen and (max-width : 500px) {
+    *{
+        background-color: lightcoral;
+    }
 }

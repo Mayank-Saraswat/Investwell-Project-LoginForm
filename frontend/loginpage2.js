@@ -1,34 +1,57 @@
 let arr = [];
 let map = new Map();
 
+function signUpDisplay(){
+  document.getElementById('signUp').style.display = "block";
+  document.getElementById('deletedata').style.display = "none";
+  document.getElementById('update_user').style.display = "none";
+  document.getElementById('signin_div').style.display = "none";
+  document.getElementsByClassName('myTable')[0].style.display="none";
+}
 
-let updateBtn = document.getElementById('updateBtn');
+function signInDisplay(){
+  document.getElementById('signUp').style.display = "none";
+  document.getElementById('deletedata').style.display = "none";
+  document.getElementById('update_user').style.display = "none";
+  document.getElementById('signin_div').style.display = "block";
+  document.getElementsByClassName('myTable')[0].style.display="none";
+}
 
-// updateBtn.addEventListener('click',(e)=>{
-//   e.preventDefault();
-//   document.getElementById('updatedata').style.display="block";
-// })
-updateBtn.addEventListener('click', () => {
-  document.getElementById('updatedata').style.display = "block";
-})
-document.getElementById("updatedatabtn").addEventListener("click", (e) => {
-  e.preventDefault();
-  updatedata();
-})
+function deleteDataDisplay(){
+  document.getElementById('signUp').style.display = "none";
+  document.getElementById('deletedata').style.display = "block";
+  document.getElementById('update_user').style.display = "none";
+  document.getElementById('signin_div').style.display = "none";
+  document.getElementsByClassName('myTable')[0].style.display="none";
+}
 
+function updateDataDisplay(){
+  document.getElementById('signUp').style.display = "none";
+  document.getElementById('deletedata').style.display = "none";
+  document.getElementById('update_user').style.display = "block";
+  document.getElementById('signin_div').style.display = "none";
+  document.getElementsByClassName('myTable')[0].style.display="none";
 
-document.getElementById("submit").addEventListener("click", function (event) {
-  event.preventDefault()
+}
 
+function showDataDisplay(){
+  document.getElementById('signUp').style.display = "none";
+  document.getElementById('deletedata').style.display = "none";
+  document.getElementById('update_user').style.display = "none";
+  document.getElementById('signin_div').style.display = "none";
+  document.getElementsByClassName('myTable')[0].style.display="block";
+}
+
+document.getElementById("submit-btn").addEventListener('click', toSubmit);
+function toSubmit(event){
+  event.preventDefault();
+  console.log("Hello");
   let Name = document.getElementById("nameField").value;
   let email = document.getElementById("mailField").value;
   let password = document.getElementById("passField").value;
-  let display = document.getElementById('tablein');
 
-
-
-  //validation
-  var regName = /^[a-zA-Z]+ [a-zA-Z]+$/;  //regex for name validation
+  //validations
+  var regName = /^[A-Za-z]+$/;  //regex for name validation
   if (Name === null || Name.match(regName)===null) {
      alert('Please enter valid name');
      return false;
@@ -49,40 +72,28 @@ document.getElementById("submit").addEventListener("click", function (event) {
     alert("existing email")
   }
 
-  let user = {
-    name: Name,
-    email: email,
-    password: password,
+  var user = {
+    Name,
+    email,
+    password,
   };
-  //console.log(user);
 
-  map.set(email, password);
-  //console.log(map);
   arr.push(user);
 
-  let datadisplay = "";
-  for (let i = 0; i < arr.length; i++) {
-    datadisplay += "<tr> <td>" + arr[i].name + "</td>";
-    datadisplay += "<td>" + arr[i].email + "</td> </tr>";
-
-  }
-
-  display.innerHTML = datadisplay;
   datagiven(user);
-  deletedata(user);
-  updatedata(user);
-});
+}
 
 //get api
 document.getElementById('show-btn').addEventListener('click',triggerAPI);
-function triggerAPI() {
-
+function triggerAPI(e) {
+  e.preventDefault();
   let printValues = [];
   $.ajax({
     url: "http://localhost:3001/fetch",
     type: "GET",
     success: function (result) {
       printValues = result;
+      document.getElementsByClassName('myTable')[0].style.display = "block";
       // console.log(result);
       let str = printValues.length > 0 ?
         `<tr class = "header">
@@ -110,6 +121,7 @@ function triggerAPI() {
 
 //post api
 function datagiven(user) {
+  console.log(user)
   $.ajax({
     url: "http://localhost:3001/insert",
     type: "POST",
@@ -180,22 +192,26 @@ document.getElementById("login2").addEventListener("click", function (event) {
   event.preventDefault()
   let email2 = document.getElementById("mailField2").value;
   let password2 = document.getElementById("passField2").value;
-  // console.log(email2);
-  // console.log(password2);
 
-  let result = false;
+let user = {
+  email2,password2
+}
+//console.log(user);
+    $.ajax({
+      url: "http://localhost:3001/login",
+      type: "POST",
+      data: user,
 
-  for (let i = 0; i < arr.length; i++) {
-    if (email2 === arr[i].email && password2 === arr[i].password) {
-      result = true;
-    }
-  }
-  if (result == true) {
-    alert("Successfully logged in");
-  } else {
-    alert("Invalid credentials");
-  }
-
+      success: function (data) {
+        if(typeof(data)==="string")
+        alert(data);
+        else{
+          let displayData = `Name : ${data.recname} <br> Email: ${data.recemail}; `
+          document.getElementById('displaydata').innerHTML = displayData;
+        }
+      },
+      error: function (error) {
+        console.log(error);
+      }
+    })
 });
-
-// console.log(arr);

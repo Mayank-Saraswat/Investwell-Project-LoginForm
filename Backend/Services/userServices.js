@@ -1,5 +1,4 @@
-const {fetchData,insertData,updateData,deleteData} = require("../Repositories/userdb.js");
-// const repo = require('../Repositories/userdb.js');
+const {fetchData,insertData,updateData,deleteData, checkData} = require("../Repositories/userdb.js");
 
 const serviceFetchData = async ()=> {
     const subQuery = 'select * from userdata';
@@ -10,8 +9,9 @@ const serviceFetchData = async ()=> {
 
     // fetchData(subQuery).then((data)=> {
     //     resolve(data);
-        // console.log(data);
+        // console.log(data); 
     // })
+
     //console.log(result);
     resolve(result);
 
@@ -19,7 +19,7 @@ const serviceFetchData = async ()=> {
 }
 
 const serviceInsertData = (newUser) => {
-    const subQuery = `INSERT INTO userdata(name, email, password) VALUES("${newUser.name}", "${newUser.email}", "${newUser.password}")` ;
+    const subQuery = `INSERT INTO userdata(name, email, password) VALUES("${newUser.Name}", "${newUser.email}", "${newUser.password}")` ;
 
     return insertData(subQuery);
 }
@@ -34,10 +34,21 @@ const serviceDeleteData = (id) => {
     return deleteData(subQuery);
 }
 
+const serviceCheckData = async (newData)=> {
+    const subQuery = `select * from userdata where email="${newData.email2}"`;
+    //console.log(newData);
+    const result = await checkData(subQuery);
+    return new Promise ((resolve) => {
+    resolve(result);
+
+})
+}
+
 module.exports = {
     serviceFetchData,
     serviceInsertData,
     serviceUpdateData,
-    serviceDeleteData
+    serviceDeleteData,
+    serviceCheckData
 };
 
