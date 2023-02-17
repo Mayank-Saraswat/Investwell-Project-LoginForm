@@ -50,7 +50,13 @@ function toSubmit(event){
   let email = document.getElementById("mailField").value;
   let password = document.getElementById("passField").value;
 
+<<<<<<< HEAD
   //validations
+=======
+
+
+  //validation
+>>>>>>> f6e9875091971584ce7cd855571e193a989b08d7
   var regName = /^[A-Za-z]+$/;  //regex for name validation
   if (Name === null || Name.match(regName)===null) {
      alert('Please enter valid name');
@@ -215,3 +221,8 @@ let user = {
       }
     })
 });
+<<<<<<< HEAD
+=======
+
+// console.log(arr);
+>>>>>>> f6e9875091971584ce7cd855571e193a989b08d7
