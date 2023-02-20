@@ -182,7 +182,7 @@ function deletedata() {
 }
 
 //update api
-function updatedata() {
+function updatedata(){
   const userId = (document.getElementById('updateuserId').value);
   const name = (document.getElementById('nameField3').value);
   const email = (document.getElementById('mailField3').value);

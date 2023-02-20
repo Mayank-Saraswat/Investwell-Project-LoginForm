@@ -1,5 +1,7 @@
 const { serviceFetchData, serviceInsertData, serviceUpdateData, serviceDeleteData, serviceCheckData } = require('../Services/userServices');
 const path = require("path");
+var CryptoJS = require("crypto-js");
+
 
 const displayForm = (req, res) => {
   // console.log('show form');
@@ -10,7 +12,7 @@ const controlFetchData = async (req, res) => {
   // return serviceFetchData();
 
   //console.log(req.headers);
-  
+
   // serviceFetchData().then((data)=>{
   //   res.send(data);
   // })
@@ -26,6 +28,7 @@ const controlInsertData = (req, res) => {
 
 const controlUpdateData = (req, res) => {
   const newData = req.body;
+  console.log("Control update  :", newData);
   return serviceUpdateData(newData);
 }
 
@@ -41,19 +44,24 @@ const controlCheckData = async (req, res) => {
   //console.log("Control Result ",result)
   //console.log("Control userData",checkUserData);
   // console.log(result);
-  if(result.length == 0){           //backend validations
-    res.send("No user found");
+
+
+
+  if (result.length == 0) {           //backend validations
+    return res.send("No user found");
   }
-  else if(checkUserData.email2 === result[0].email && checkUserData.password2 === result[0].password){
+  var bytes = CryptoJS.AES.decrypt(result[0].password, 'secret key 123');
+  var originalText = bytes.toString(CryptoJS.enc.Utf8);
+
+  if(originalText!==checkUserData.password2){
+    return res.send("Invalid credentials");
+  }
+  
     let sendData = {
-      recname : result[0].name,
-      recemail : result[0].email
+      recname: result[0].name,
+      recemail: result[0].email
     }
-    res.send(sendData);
-  }
-  else if(checkUserData.email2 === result[0].email && checkUserData.password2 != result[0].password){
-    res.send("Invalid credentials");
-  }
+    return res.send(sendData);
 }
 
 module.exports = {

@@ -29,6 +29,7 @@ const insertData = (sqlQuery) =>{
 }
 
 const updateData = (sqlQuery) =>{
+  console.log("Update data func");
     return connection.query(sqlQuery, (err, result)=>{
   if(err){
     console.log(err);
