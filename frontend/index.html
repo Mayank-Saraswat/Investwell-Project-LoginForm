@@ -13,11 +13,11 @@
 <body>
 
     <nav> 
-        <li><a href="" >Home</a></li>
+        <li><a href="" onclick="imageDisplay()">Home</a></li>
         <li><a href="#signUp" onclick="signUpDisplay()">Sign Up</a></li>
         <li><a href="#signin_div" onclick="signInDisplay()">Sign In</a></li>
-        <li><a href="#deletedata" onclick="deleteDataDisplay()">Delete</a></li>
-        <li><a href="#update_user" onclick="updateDataDisplay()" id="update-btn">Update</a></li>
+        <!-- <li><a href="#deletedata" onclick="deleteDataDisplay()">Delete</a></li>
+        <li><a href="#update_user" onclick="updateDataDisplay()" id="update-btn">Update</a></li> -->
         <li><a href="" onclick="showDataDisplay()"  id="show-btn">Show</a></li>
         <!-- <li><a href="">Forgot Password</a></li> -->
     </nav>
@@ -37,6 +37,7 @@
 
     <table class="myTable" style="display: none;"></table>
 
+    <!-- Delete fields -->
     <div id="deletedata" style="display: none; text-align: center; margin: 10px;">
         <h3>Delete User</h3>
         <input type="number" id="deleteuserId" placeholder="User Id" name="deleteuserId"><br><br>
@@ -55,8 +56,11 @@
 
             <input type="password" name = "password3" placeholder="Password" id="passField3"><br><br>
 
-        <button id = "updatedatabtn" onclick="updatedata()">Update Data</button>
+        <button id = "updatedatabtn" onclick="updatedata()">Update Data</button><br><br>
+
+        <button id = "deletebtn" onclick="deleteDataDisplay()">Click here to delete data</button>
     </form>
+    
 </div>
 
     <!-- SignIn part -->
@@ -72,8 +76,18 @@
                     <button id="reset2" type="Reset">Reset</button>
         </form>
     </div>
-    <div id="displaydata"></div>
-    <script src="loginpage2.js"> </script>
+    <div id="displaydata" style="color: crimson; font-weight: bold;"></div>
+ 
+    <div id="image">
+        <img src="InvestWell.png" width="350" height="100">
+        <h2 style="text-align: center;">About us</h2>
+        <p style="color: red; text-align: center;">At our core, we are a product focused company. We believe that the problems associated in the field of Financial Advisory are rooted in technology and design rather than government bureaucracy. Our goal is to create simple yet comprehensive applications to cover all the needs of Financial Advisors.<br>
+            Our product allows financial advisors to eliminate the complexity of finance for their investors. InvestWell is a common noun in the mutual fund distribution industry and is known for its robustness and reliability all over India.
+            </p> <br><br>
+            <p style="text-align: center;">For more info please visit: <a href="https://www.investwellonline.com/" style="font-weight: bold; font-size: large;">www.investwellonline.com</a></p>
+    </div>
+
+    <script src="loginpage2.js" defer> </script>
 </body>
 
 </html>

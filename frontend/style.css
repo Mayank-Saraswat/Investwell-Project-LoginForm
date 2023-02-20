@@ -79,7 +79,7 @@ form input {
     font-size: large;
 }
 
-#delete-Btn{
+#delete-Btn, #deletebtn{
     font-size: large;
     border-radius: 4px;
 }
@@ -104,6 +104,6 @@ border-radius: 5px;
 
 @media screen and (max-width : 500px) {
     *{
-        background-color: lightcoral;
+        background-color: lightpink;
     }
 }

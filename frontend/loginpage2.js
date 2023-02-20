@@ -1,7 +1,17 @@
 let arr = [];
 let map = new Map();
 
+function imageDisplay(){
+  document.getElementById('image').style.display="block";
+  document.getElementById('signUp').style.display = "none";
+  document.getElementById('deletedata').style.display = "none";
+  document.getElementById('update_user').style.display = "none";
+  document.getElementById('signin_div').style.display = "none";
+  document.getElementsByClassName('myTable')[0].style.display="none";
+}
+
 function signUpDisplay(){
+  document.getElementById('image').style.display="none";
   document.getElementById('signUp').style.display = "block";
   document.getElementById('deletedata').style.display = "none";
   document.getElementById('update_user').style.display = "none";
@@ -10,6 +20,7 @@ function signUpDisplay(){
 }
 
 function signInDisplay(){
+  document.getElementById('image').style.display="none";
   document.getElementById('signUp').style.display = "none";
   document.getElementById('deletedata').style.display = "none";
   document.getElementById('update_user').style.display = "none";
@@ -18,6 +29,7 @@ function signInDisplay(){
 }
 
 function deleteDataDisplay(){
+  document.getElementById('image').style.display="none";
   document.getElementById('signUp').style.display = "none";
   document.getElementById('deletedata').style.display = "block";
   document.getElementById('update_user').style.display = "none";
@@ -26,6 +38,7 @@ function deleteDataDisplay(){
 }
 
 function updateDataDisplay(){
+  document.getElementById('image').style.display="none";
   document.getElementById('signUp').style.display = "none";
   document.getElementById('deletedata').style.display = "none";
   document.getElementById('update_user').style.display = "block";
@@ -35,6 +48,7 @@ function updateDataDisplay(){
 }
 
 function showDataDisplay(){
+  document.getElementById('image').style.display="none";
   document.getElementById('signUp').style.display = "none";
   document.getElementById('deletedata').style.display = "none";
   document.getElementById('update_user').style.display = "none";
@@ -50,33 +64,28 @@ function toSubmit(event){
   let email = document.getElementById("mailField").value;
   let password = document.getElementById("passField").value;
 
-<<<<<<< HEAD
-  //validations
-=======
 
+  //frontend validations
+  // var regName = /^[A-Za-z]+$/;  //regex for name validation
+  // if (Name === null || Name.match(regName)===null) {
+  //    alert('Please enter valid name');
+  //    return false;
+  // }
 
-  //validation
->>>>>>> f6e9875091971584ce7cd855571e193a989b08d7
-  var regName = /^[A-Za-z]+$/;  //regex for name validation
-  if (Name === null || Name.match(regName)===null) {
-     alert('Please enter valid name');
-     return false;
-  }
+  // if (email.indexOf('@') <= 0) {
+  //   alert('Please enter valid email');
+  //   email.focus();
+  //   return false;
+  // }
 
-  if (email.indexOf('@') <= 0) {
-    alert('Please enter valid email');
-    email.focus();
-    return false;
-  }
-
-  if (passField.value.length < 5) {
-    alert('Please enter atleast 5 characters in password');
-    password.focus();
-    return false;
-  }
-  else if (map.has(email)) {
-    alert("existing email")
-  }
+  // if (passField.value.length < 5) {
+  //   alert('Please enter atleast 5 characters in password');
+  //   password.focus();
+  //   return false;
+  // }
+  // else if (map.has(email)) {
+  //   alert("existing email")
+  // }
 
   var user = {
     Name,
@@ -134,7 +143,14 @@ function datagiven(user) {
     data: user,
 
     success: function (data) {
-      console.log('success', data);
+    
+      if(typeof data === "string"){
+        alert(data);
+      }
+      else{
+        console.log('success', data);
+      }
+      
     },
     error: function (error) {
       console.log(error);
@@ -156,9 +172,11 @@ function deletedata() {
 
     success: function (data) {
       console.log('success', data);
+      alert(data);
     },
     error: function (error) {
       console.log(error);
+      alert(error);
     }
   })
 }
@@ -184,9 +202,11 @@ function updatedata() {
 
     success: function (data) {
       console.log('success', data);
+      alert(data);
     },
     error: function (error) {
       console.log(error);
+      alert(error);
     }
   })
 }
@@ -212,8 +232,10 @@ let user = {
         if(typeof(data)==="string")
         alert(data);
         else{
-          let displayData = `Name : ${data.recname} <br> Email: ${data.recemail}; `
+          let displayData = `Name : ${data.recname} <br> Email: ${data.recemail} `
           document.getElementById('displaydata').innerHTML = displayData;
+          deleteDataDisplay();
+          updateDataDisplay();
         }
       },
       error: function (error) {
@@ -221,8 +243,5 @@ let user = {
       }
     })
 });
-<<<<<<< HEAD
-=======
 
 // console.log(arr);
->>>>>>> f6e9875091971584ce7cd855571e193a989b08d7

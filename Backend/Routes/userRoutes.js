@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const {signupMiddleware, signinMiddleware, deleteMiddleware, updateMiddleware} = require("../Validation/validation");
 
 // var bodyParser = require('body-parser');
 // router.use(bodyParser.json());
@@ -9,9 +10,9 @@ const {displayForm,controlInsertData,controlFetchData,controlUpdateData,controlD
 
 router.get('/', displayForm);
 router.get('/fetch', controlFetchData);
-router.post('/insert', controlInsertData);
-router.post('/update', controlUpdateData);
-router.delete('/delete', controlDeleteData);
-router.post('/login', controlCheckData);
+router.post('/insert', signupMiddleware, controlInsertData);
+router.post('/update', updateMiddleware,controlUpdateData);
+router.delete('/delete', deleteMiddleware, controlDeleteData);
+router.post('/login', signinMiddleware, controlCheckData);
 
 module.exports = router;
