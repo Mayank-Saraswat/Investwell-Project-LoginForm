@@ -29,7 +29,9 @@ const serviceInsertData = (newUser) => {
 }
 
 const serviceUpdateData = (newData) => {
-    const subQuery = `update userdata set name = "${newData.name}", email = "${newData.email}", password = "${newData.password}" where UserId = ${newData.userId}`;
+    var ciphertext = CryptoJS.AES.encrypt(newData.password, 'secret key 123').toString();
+
+    const subQuery = `update userdata set name = "${newData.name}", email = "${newData.email}", password = "${ciphertext}" where UserId = ${newData.userId}`;
     console.log("Service update func");
     return updateData(subQuery);
 }

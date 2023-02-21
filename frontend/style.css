@@ -2,13 +2,19 @@ nav {
     display: flex;
     text-align: center;
     width: 100%;
-    background-color: lightblue;
+    /* background-color: lightblue; */
 }
 nav li{
     list-style-type: none;
     padding: 20px;
     font-size: 20px;
     font-weight: bold;
+}
+
+body{
+    background-image: url("backgroundImage.avif");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 nav li a{
@@ -32,7 +38,7 @@ table, th, td {
 
 .container {
     text-align: center;
-    background-color: cadetblue;
+    /* background-color: cadetblue; */
 }
 
 form input {
@@ -52,7 +58,7 @@ form input {
     text-align: center;
     margin-top: 20px;
     margin-right: 30px;
-    background-color: darkseagreen;
+    /* background-color: darkseagreen; */
 }
 
 #login2 {
@@ -70,7 +76,7 @@ form input {
 
 #deletedata {
     padding: 2px;
-    background-color: cadetblue;
+    /* background-color: cadetblue; */
     border-radius: 4px;
     font-size: 25px;
 }
@@ -91,7 +97,7 @@ form input {
 }
 
 #update_user{
-    background-color: darkseagreen;
+    /* background-color: darkseagreen; */
     text-align: center;
     margin: 10px;
 }

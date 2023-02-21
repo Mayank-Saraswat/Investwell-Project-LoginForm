@@ -45,8 +45,6 @@ const controlCheckData = async (req, res) => {
   //console.log("Control userData",checkUserData);
   // console.log(result);
 
-
-
   if (result.length == 0) {           //backend validations
     return res.send("No user found");
   }
@@ -58,6 +56,7 @@ const controlCheckData = async (req, res) => {
   }
   
     let sendData = {
+      userId: result[0].UserId,
       recname: result[0].name,
       recemail: result[0].email
     }

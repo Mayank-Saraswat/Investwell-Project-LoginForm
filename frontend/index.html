@@ -40,7 +40,7 @@
     <!-- Delete fields -->
     <div id="deletedata" style="display: none; text-align: center; margin: 10px;">
         <h3>Delete User</h3>
-        <input type="number" id="deleteuserId" placeholder="User Id" name="deleteuserId"><br><br>
+        <input type="number" id="deleteuserId" placeholder="User Id" name="deleteuserId" disabled><br><br>
         <button id ="delete-Btn" onclick="deletedata()">Delete Data</button>
     </div>
 
@@ -48,11 +48,11 @@
 <!-- update fields -->
 <div id="update_user" style="display: none;">
     <form id ="updatedata"> 
-        <input type="number" id="updateuserId" placeholder="User Id" name="updateuserId"><br><br>
+        <input type="number" id="updateuserId" placeholder="User Id" name="updateuserId" disabled><br><br>
 
             <input type="text" name= "name3" placeholder="Enter name" id="nameField3"><br><br>
 
-            <input type="email" name = "email3" placeholder="Enter mail" id="mailField3"><br><br>
+            <input type="email" name = "email3" placeholder="Enter mail" id="mailField3" disabled><br><br>
 
             <input type="password" name = "password3" placeholder="Password" id="passField3"><br><br>
 
@@ -86,7 +86,6 @@
             </p> <br><br>
             <p style="text-align: center;">For more info please visit: <a href="https://www.investwellonline.com/" style="font-weight: bold; font-size: large;">www.investwellonline.com</a></p>
     </div>
-
     <script src="loginpage2.js" defer> </script>
 </body>
 

@@ -1,6 +1,6 @@
 let arr = [];
 let map = new Map();
-
+let signinData;
 function imageDisplay(){
   document.getElementById('image').style.display="block";
   document.getElementById('signUp').style.display = "none";
@@ -35,6 +35,7 @@ function deleteDataDisplay(){
   document.getElementById('update_user').style.display = "none";
   document.getElementById('signin_div').style.display = "none";
   document.getElementsByClassName('myTable')[0].style.display="none";
+  document.getElementById('deleteuserId').value = signinData.userId;
 }
 
 function updateDataDisplay(){
@@ -44,6 +45,8 @@ function updateDataDisplay(){
   document.getElementById('update_user').style.display = "block";
   document.getElementById('signin_div').style.display = "none";
   document.getElementsByClassName('myTable')[0].style.display="none";
+  document.getElementById('updateuserId').value = signinData.userId;
+  document.getElementById('mailField3').value = signinData.recemail;
 
 }
 
@@ -63,7 +66,6 @@ function toSubmit(event){
   let Name = document.getElementById("nameField").value;
   let email = document.getElementById("mailField").value;
   let password = document.getElementById("passField").value;
-
 
   //frontend validations
   // var regName = /^[A-Za-z]+$/;  //regex for name validation
@@ -209,6 +211,8 @@ function updatedata(){
       alert(error);
     }
   })
+  document.getElementById('nameField3').value = "";
+  document.getElementById('passField3').value = "";
 }
 
 
@@ -232,6 +236,7 @@ let user = {
         if(typeof(data)==="string")
         alert(data);
         else{
+          signinData = data;
           let displayData = `Name : ${data.recname} <br> Email: ${data.recemail} `
           document.getElementById('displaydata').innerHTML = displayData;
           deleteDataDisplay();
